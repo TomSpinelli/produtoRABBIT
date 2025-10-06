@@ -18,7 +18,7 @@ public class ProdutoConsumer {
     }
 
     @RabbitListener(queues = "${broker.queue.produto.name}")
-    public void listenEmailQueue(@Payload ProdutoEstoqueDTO dto){
+    public void listenProdutoQueue(@Payload ProdutoEstoqueDTO dto){
             var produto =  new Produto();
             BeanUtils.copyProperties(dto, produto);
             produtoService.verificarEstoque(dto.idProduto(), dto.quantidade());
